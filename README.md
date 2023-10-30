@@ -32,6 +32,6 @@ After that open the link below in your browser to navigate to the Object page of
 
 http://localhost:4004/deep/webapp/index.html#/DeeplyNestedChild(ID=1,IsActiveEntity=true)
 
-Making a change on **Number** (1 → 1000) yields the expected results with an **Object ID** of *Name 1*, (i.e. the associated entry on first level):
+Making a change on **Number** (1 → 1000) yields the expected results, with an **Object ID** of *Name 1* (i.e. the associated entry on first level):
 
 <img width="1164" alt="Screenshot 2023-10-30 at 21 50 23" src="https://github.com/mnkiefer/nested-cap-sample/assets/8320933/149489d3-461d-4059-9d9e-223af8255c66">
