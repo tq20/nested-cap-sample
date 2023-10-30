@@ -36,3 +36,5 @@ http://localhost:4004/sample/webapp/index.html#/ThirdLevel(ID=1,IsActiveEntity=t
 
 
 Making a change on **Additional info** yields the expected results with an **Object ID** of *Name 1*, (i.e. the associated data entry on first level):
+
+<img width="1164" alt="Screenshot 2023-10-30 at 20 48 48" src="https://github.com/mnkiefer/nested-cap-sample/assets/8320933/1eedbd33-6872-491a-b27a-7c20920212d9">
