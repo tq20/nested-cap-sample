@@ -1,0 +1,161 @@
+{
+  "_version": "1.49.0",
+  "sap.app": {
+    "id": "sample",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:worklist",
+      "version": "1.11.2-pre-20230926090234-c761e7051.0",
+      "toolsId": "0fe18ae6-7222-4ad6-9b57-bda5e8597847"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/odata/v4/list/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "4.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.119.2",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.ushell": {},
+        "sap.fe.templates": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "sample.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      }
+    },
+    "resources": {
+      "css": []
+    },
+    "routing": {
+      "config": {},
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "ThirdLevelList",
+          "target": "ThirdLevelList"
+        },
+        {
+          "pattern": "ThirdLevel({key}):?query:",
+          "name": "ThirdLevelObjectPage",
+          "target": "ThirdLevelObjectPage"
+        },
+        {
+          "pattern": "ThirdLevel({key})/children({key2}):?query:",
+          "name": "NestedChildObjectPage",
+          "target": "NestedChildObjectPage"
+        }
+      ],
+      "targets": {
+        "ThirdLevelList": {
+          "type": "Component",
+          "id": "ThirdLevelList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "entitySet": "ThirdLevel",
+              "variantManagement": "Page",
+              "hideFilterBar": true,
+              "navigation": {
+                "ThirdLevel": {
+                  "detail": {
+                    "route": "ThirdLevelObjectPage"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "ThirdLevelObjectPage": {
+          "type": "Component",
+          "id": "ThirdLevelObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "entitySet": "ThirdLevel",
+              "navigation": {
+                "children": {
+                  "detail": {
+                    "route": "NestedChildObjectPage"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "NestedChildObjectPage": {
+          "type": "Component",
+          "id": "NestedChildObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "entitySet": "NestedChild"
+            }
+          }
+        }
+      }
+    }
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "transactional"
+  }
+}
