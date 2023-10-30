@@ -27,7 +27,7 @@ entity NestedChild {
   key ID : Integer;
   value : String;
 
-  parent : Association to one ThirdLevel;
+  parent : Association to ThirdLevel;
   children : Composition of many DeeplyNestedChild;
 };
 
@@ -35,5 +35,5 @@ entity DeeplyNestedChild {
   key ID : Integer;
   number : Integer;
 
-  parent : Association to one NestedChild;
+  parent : Association to NestedChild;
 };
