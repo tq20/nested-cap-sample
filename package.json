@@ -22,6 +22,9 @@
     "app/sample",
     "app/sample",
     "app/sample",
-    "app/sample"
+    "app/sample",
+    "app/child",
+    "app/child",
+    "app/deep"
   ]
 }

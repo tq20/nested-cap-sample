@@ -2,15 +2,13 @@
 
 CAP sample to demonstrate change-tracking for a [nested model](./db/schema.cds).
 
-We want to track changes on the **additionalInfo** property (on 3rd level) with a human-readable *Object ID* that consists of the **name** property (on 1st level).
+We want to track changes on the **number** property (on a deeply nested child entity) with a human-readable *Object ID* that consists of the **name** property (on 1st level).
 
 Hence, we annotate as follows:
 
 ```cds
-using { sap.capire.sample } from './list-service';
-
-annotate ListService.ThirdLevel with @changelog: [ secondLevel.firstLevel.name ] {
-  additionalInfo @changelog @Common.Label: 'Additional Info';
+annotate ListService.DeeplyNestedChild with @changelog: [ parent.parent.secondLevel.firstLevel.name ] {
+  number @changelog @Common.Label: 'Number';
 }
 ```
 
@@ -32,7 +30,7 @@ cds w
 
 After that open the link below in your browser to navigate to the Object page of the 3rd level entity:
 
-http://localhost:4004/sample/webapp/index.html#/ThirdLevel(ID=1,IsActiveEntity=true)
+http://localhost:4004/deep/webapp/index.html#/DeeplyNestedChild(ID=1,IsActiveEntity=true)
 
 
-Making a change on **Additional info** yields the expected results with an **Object ID** of *Name 1*, (i.e. the associated data entry on first level):
+Making a change on **Number** (1 → 1000) yields the expected results with an **Object ID** of *Name 1*, (i.e. the associated data entry on first level):
