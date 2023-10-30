@@ -30,6 +30,9 @@ cds w
 
 After that open the link below in your browser to navigate to the Object page of the 3rd level entity:
 
+<img width="1164" alt="Screenshot 2023-10-30 at 21 50 23" src="https://github.com/mnkiefer/nested-cap-sample/assets/8320933/149489d3-461d-4059-9d9e-223af8255c66">
+
+
 http://localhost:4004/deep/webapp/index.html#/DeeplyNestedChild(ID=1,IsActiveEntity=true)
 
 
