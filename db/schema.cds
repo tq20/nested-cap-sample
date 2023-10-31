@@ -1,39 +1,18 @@
 namespace sap.capire.sample;
+using {
+  managed,
+  cuid
+} from '@sap/cds/common';
 
-entity FirstLevel {
-  key ID : Integer;
-  name : String;
-
-  secondLevel : Association to SecondLevel;
-};
-
-entity SecondLevel {
-  key ID : Integer;
-  description : String;
-
-  firstLevel: Association to FirstLevel;
-  thirdLevel : Association to ThirdLevel;
-};
-
-entity ThirdLevel {
-  key ID : Integer;
+entity ThirdLevel: cuid {
   additionalInfo : String;
 
-  secondLevel: Association to SecondLevel;
-  children : Composition of many NestedChild;
+  children : Composition of many NestedChild on children.parent = $self;
 };
 
-entity NestedChild {
-  key ID : Integer;
+entity NestedChild: cuid {
   value : String;
 
   parent : Association to ThirdLevel;
-  children : Composition of many DeeplyNestedChild;
 };
 
-entity DeeplyNestedChild {
-  key ID : Integer;
-  number : Integer;
-
-  parent : Association to NestedChild;
-};

@@ -4,18 +4,8 @@ annotate service.ThirdLevel with @(
     UI.LineItem : [
         {
             $Type : 'UI.DataField',
-            Label : 'ID',
-            Value : ID,
-        },
-        {
-            $Type : 'UI.DataField',
             Value : additionalInfo,
-        },
-        {
-            $Type : 'UI.DataField',
-            Label : 'secondLevel_ID',
-            Value : secondLevel_ID,
-        },
+        }
     ]
 );
 annotate service.ThirdLevel with @(
@@ -24,18 +14,8 @@ annotate service.ThirdLevel with @(
         Data : [
             {
                 $Type : 'UI.DataField',
-                Label : 'ID',
-                Value : ID,
-            },
-            {
-                $Type : 'UI.DataField',
                 Value : additionalInfo,
-            },
-            {
-                $Type : 'UI.DataField',
-                Label : 'secondLevel_ID',
-                Value : secondLevel_ID,
-            },
+            }
         ],
     },
     UI.Facets : [
@@ -45,5 +25,21 @@ annotate service.ThirdLevel with @(
             Label : 'General Information',
             Target : '@UI.FieldGroup#GeneratedGroup1',
         },
+         {
+            $Type  : 'UI.ReferenceFacet',
+            Label  : 'NestedChild',
+            ID     : 'NestedChildFacet',
+            Target : 'children/@UI.LineItem'
+        }
+    ]
+);
+
+annotate service.NestedChild with @(
+    UI.LineItem : [
+        {
+            $Type : 'UI.DataField',
+            Label : 'value',
+            Value : value,
+        }
     ]
 );
